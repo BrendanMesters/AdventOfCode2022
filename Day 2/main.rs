@@ -18,7 +18,12 @@ fn main() {
                 if let Some(me) = temp.next() {
                     println!("{}, {}, {}", ip, opponent, me);
                     let part_one = false;
+                    let x_index = ["A", "B", "C"].iter().position(|&x| x == opponent).unwrap();
+                    let y_index = ["X", "Y", "Z"].iter().position(|&x| x == me).unwrap();
                     if part_one {
+                        result += [[4, 8, 3], [1, 5, 9], [7, 2, 6]][x_index][y_index];
+                       /* 
+                       // My origional solution
                         if me == "X" {
                             result += 1;
                             if opponent == "A" {result += 3;}
@@ -34,7 +39,11 @@ fn main() {
                             if opponent == "C" {result += 3;}
                             if opponent == "B" {result += 6;}
                         }
+                       */ 
                     } else {
+                        result += [[3, 4, 8], [1, 5, 9], [2, 6, 7]][x_index][y_index];
+                       /* 
+                        // My origional solution
                         if me == "X" {
                             result += 0;
                             if opponent == "A" {result += 3;}
@@ -53,6 +62,7 @@ fn main() {
                             if opponent == "B" {result += 3;}
                             if opponent == "C" {result += 1;}
                         } 
+                       */ 
                     }
                 }} 
             }
@@ -60,6 +70,9 @@ fn main() {
         }
     }
 }
+
+
+
 
 // The output is wrapped in a Result to allow matching on errors
 // Returns an Iterator to the Reader of the lines of the file.
